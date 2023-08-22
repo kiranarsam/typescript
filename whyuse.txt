@@ -1,0 +1,62 @@
+two main reasons:
+1. TypeScript adds a type, system to help you avoid many problems with dynamic types in JavaScript
+2. TypeScript implements the future features of JavaScript a.k.a ES Next so that you can use them today.
+
+Example:
+let a; // undefined
+a = "hello";  // string type
+a = 100; // number type
+
+JavaScript will automatically infer the type from the value.
+
+function getProduct(id) {
+    return {
+        id : id,
+        name : `Awesome Gadget ${id}`,
+        price: 99.5
+    }
+}
+
+const product = getProduct(1);
+
+console.log(`The product ${product.Name} costs $${product.price}`);
+
+Output: The product undefined costs $99.5
+
+// Miss match of "Name" over "name" in the object
+
+const showProduct = (name, price) => {
+    console.log(`The product ${name} costs ${price}$.`);
+}
+
+const product = getProduct(1);
+showProduct(product.price, product.name);
+
+Output: The product 99.5 costs $Awesome Gardget 1
+// Miss match in function parameters.
+
+That's why TypeScript comes into play.
+
+How TypeScript solves this issue:
+
+interface Product {
+    id : number,
+    name : string,
+    price: number
+};
+
+const getProduct(id : number) : Product {
+    return {
+        id : id,
+        name : `Awesome Gadget ${id}`,
+        price: 99.5
+    };
+};
+
+const showProduct = (name :string, price : number) => {
+    console.log(`The product ${name} costs ${price}$.`);
+}
+
+Summary:
+1. JavaScript is dynamically typed. It offers flexibility but also creates many problems.
+2. TypeScript adds an optional type system to JavaScript to solve these problems.
