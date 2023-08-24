@@ -1,0 +1,14 @@
+{
+  "name": "typescript-m",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helloworld/app.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/helloworld/app.js",
+    "start": "concurrently npm:start:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
